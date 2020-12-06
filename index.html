@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Administração</title>
+
+        <link rel="icon" href="img/logo.png">
+
+        <!-- Fontes e FontAwesome -->
+        <link rel="stylesheet" href="fonts/OpenSans-Regular.ttf">
+        <link rel="stylesheet" href="./fontawesome/css/all.css">
+
+        <!-- Style -->
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body onload="listaLocais()">
+
+        <header>
+            <span class="titulo">Administração</span>
+        </header>
+
+        <div class="" id="barra-navegadores" onclick="ativaNavegadores()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <div class="container">
+            <div class="navegadores inativo" id="navegadores">
+                
+                <div class="close" onclick="fechaNavegadores()">
+                    <i class="fas fa-times"></i>
+                </div>
+                <a class="navegador" href="#">Acessos Administrativos</a>
+                <a class="navegador" href="#">Serviços</a>
+                <a class="navegador" href="#">Fale Conosco</a>
+                <a class="navegador" href="#">Reporte</a>
+                <a class="navegador" href="#">Pesquisa de Sastifação</a>
+                <a class="navegador" href="#">Prédios</a>
+                <a class="navegador" href="#">Locais de Trabalho</a>
+            </div>
+
+            <div class="conteudo">
+                <div class="centraliza">
+                    <p class="conteudo-titulo">Locais de Trabalho</p>
+                    <div class="formulario">
+                        <div class="formulario-item">
+                            <label for="funcionario">Funcionário</label>
+                            <input id="funcionario_" name="funcionario" type="text">    
+                            <span id="erro-funcionario" class="form-error inativo">Registro obrigatório</span>
+                        </div>
+                        <div class="formulario-item">
+                            <label for="predio">Prédio</label>
+                            <select name="predio" id="predio_">
+                                <option value="" selected></option>
+                                <option value="predio1">Predio1</option>
+                                <option value="predio2">Predio2</option>
+                                <option value="predio3">predio3</option>
+                                <option value="predio4">Predio4</option>
+                            </select>
+                            <span id="erro-predio" class="form-error inativo">Registro obrigatório</span>
+                        </div>
+                        <div class="formulario-item">
+                            <label for="localTrabalho">Local de Trabalho</label>
+                            <input id="localTrabalho_" name="localTrabalho" type="text">    
+                            <span id="erro-local" class="form-error inativo">Registro obrigatório</span>
+                        </div>
+                        <div class="formulario-salvar" onclick="cadastrarLocal()">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="formulario-buscar" onclick="buscarLocal()">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+
+                    <div class="tabela-info " id="tabela-info">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Funcionário</th>
+                                    <th>Prédio</th>
+                                    <th>Local de Trabalho</th>
+                                    <th class="opcoes"></th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody id="apresentandoLocais">
+                                <tr>
+                                    <td>Exemplo Funcionário 2</td>
+                                    <td>Exemplo Prédio 2</td>
+                                    <td>Exemplo Local de Trabalho 2</td>
+                                    <td>
+                                        <i class="fas fa-pen"></i>
+                                        <i class="fas fa-trash"></i>
+                                    </td>    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="nenhumCadastro " id="nenhumCadastro">
+                        <p>Ainda não foi cadastrado informações!</p>
+                    </div>
+                    
+                    <div class="nenhumCadastro " id="nenhumCadastroEncontrado">
+                        <p>Não há informações que conferem com a pesquisa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal-container inativo" id="modal">
+            <div class="modal">
+                <div class="modal-close inativo" id="modal-close">
+                    <i class="fas fa-times" onclick="fecharModal()"></i>
+                </div>
+                <h3 class="modal-titulo " id="modal-titulo">Título</h3>
+                <p class="modal-conteudo" id="modal-texto">Texto de descrição de acordo com a intenção do modal!</p>
+                <div class="modal-botao" id="modal-botao">
+                    <button class="button success inativo" id="modal-success">OK</button>
+                    <button class="button inativo" id="modal-normal">OK</button>
+                    <button class="button cancel inativo" id="modal-cancel">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Meu Script -->
+        <script src="js/script.js"></script>
+
+    </body>
+</html>

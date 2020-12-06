@@ -1,0 +1,422 @@
+/* Reset
+--------------------------------*/
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family:'Open Sans';
+}
+
+a{
+    text-decoration: none;
+}
+
+input {
+    padding: 1px 2px;
+}
+
+input, select{
+    font: 400 13.3333px 'Open Sans';
+    outline: none;
+    width: 30%;
+    min-width: 200px;
+    height: 28px;
+    border: 1px solid rgb(140, 141, 141);
+    border-radius: 3px;
+    background-color: white;
+}
+
+td input, td select{
+    width: 250px;
+}
+
+select{
+    height: 32px;
+}
+
+table, td, th {
+    border: 1px solid rgb(216, 215, 215);
+}
+
+
+/* Gerais
+-----------------------------------*/
+.inativo{
+    display: none;
+}
+
+.fas{
+    color: rgb(17, 47, 66);
+    cursor: pointer;
+    
+    -moz-transition: all 250ms ease-in-out;
+    -webkit-transition: all 250ms ease-in-out;
+    transition: all 250ms ease-in-out;
+}
+.fas:hover{
+    color: rgba(25, 62, 85, 0.644);
+}
+
+.fas.fa-plus, .fas.fa-search{
+    margin-left: 10px;
+
+    font-size: 15px;
+    line-height: 500%;
+}
+.fas.fa-search{
+    margin-right: 15px;
+}
+
+.fas.fa-pen, .fas.fa-check{
+    margin-right: 10px;
+}
+
+.fas.fa-bars{
+    margin: 10px 0 0 10px;
+    font-size: 35px;
+}
+
+.close .fas.fa-times{
+    color: white;
+    font-size: 30px;
+    margin: 30px 0 100px 250px;
+}
+.close .fas.fa-times:hover{
+    color: rgb(95, 135, 160);
+}
+
+#barra-navegadores{
+    display: none;
+}
+
+.close{
+    display: none;
+}
+
+
+
+
+
+/* Cabeçalho
+--------------------------------*/
+header{
+    width: 100%;
+    height: 180px;
+    background-image: url("../img//admin-small.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.titulo{
+    display: block;
+    width: 35%;
+    height: inherit;
+    background: linear-gradient(110deg, rgba(17, 47, 66, 0.712) 80%, #004d9500 20%);
+    
+    color: white;
+    text-align: center;
+    line-height: 450%;
+    font-size: 40px;
+    font-style: italic;
+    font-weight: 100;
+}
+
+
+/* Conteúdo
+--------------------------------*/
+.container{
+    margin: 100px 20px 10px 30px;
+}
+
+/* Navegadores */
+.navegadores{
+    float: left;
+    width: 25%;
+    margin-left: 20px;
+}
+
+.navegador{
+    display: block;
+
+    color: white;
+    text-align: center;
+    padding: 10px 30px;
+    margin-bottom: 10px;
+
+    background: rgb(17, 47, 66);
+    border-radius: 5px;
+
+    -moz-transition: all 250ms ease-in-out;
+    -webkit-transition: all 250ms ease-in-out;
+    transition: all 250ms ease-in-out;
+}
+.navegador:hover{
+    background: rgba(17, 47, 66, 0.808);
+}
+
+/* Conteúdo */
+.conteudo{
+    float: left;
+    width: 68%;
+    max-width: 930px;
+    margin-left: 60px;
+}
+
+
+.conteudo-titulo{
+    font-size: 30px;
+    font-style: italic;
+    color: rgb(17, 47, 66);
+}
+
+.formulario{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.formulario{
+    margin-top: 10px;
+}
+.formulario-item label{
+    color: rgb(140, 141, 141);
+    font-style: italic;
+
+    display: block;
+}
+
+.form-error{
+    display: block;
+
+    font-size: 13px;
+    color: rgb(218, 31, 31);
+    font-style: italic;
+
+    margin-bottom: 10px;
+}
+.form-error.inativo{
+    display: none;
+}
+
+/* Tabela de Informações */
+
+.tabela-info table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabela-info tr{
+    height: 40px;
+}
+
+.tabela-info th{
+    width: 30%;
+    color: white;
+    font-weight: 100;
+    font-style: italic;
+
+    background: rgb(17, 47, 66);
+}
+.tabela-info th:nth-last-child(){
+    width: 10%;
+}
+
+
+.tabela-info td{
+    background: rgb(243, 243, 243);
+    text-align: center;
+}
+
+.nenhumCadastro{
+    color: rgb(17, 47, 66);
+    font-style: italic;
+}
+
+/* Modal
+-------------------------------*/
+.modal-container{
+    width: 100%;
+    height: 100vh;
+    
+    background: rgb(0,0,0,.5);
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-container.inativo{
+    display: none;
+}
+
+.modal{
+    background: white;
+    width: 500px;
+    padding: 40px;
+    border-radius: 8px;
+}
+
+.modal-titulo{
+    font-size: 30px;
+    margin: 50px 0;
+
+    color: rgb(122, 122, 122);
+}
+.modal-titulo.success{
+    color: green;
+}
+.modal-titulo.confirm{
+
+}
+.modal-conteudo{
+}
+.modal-botao{
+    margin-top: 40px;
+    float: right;
+}
+.modal-botao .button{
+    background: rgb(204, 211, 211);
+
+    padding: 8px 20px;
+    margin-right: 5px;
+
+    font-size: 18px;
+    font-family: 'Open Sans';
+    text-transform: capitalize;
+
+    border: 0;
+    border-radius: 8px;
+    
+    cursor: pointer;
+
+    -moz-transition: all 250ms ease-in-out;
+    -webkit-transition: all 250ms ease-in-out;
+    transition: all 250ms ease-in-out;
+}
+.modal-botao .button.success{
+    background: rgb(24, 138, 24);
+    color: white;
+    
+}
+.modal-botao .button.success:hover{
+    background: rgb(87, 156, 87);
+}
+
+.modal-botao .button.cancel{
+    background: rgb(218, 31, 31);
+    color: white;
+    
+}
+.modal-botao .button.cancel:hover{
+    background:rgb(253, 88, 88);
+}
+
+.modal-close .fas.fa-times{
+    font-size: 20px;
+    color: rgb(122, 122, 122);
+
+    float: right;
+    margin-right: 30px;
+}
+.modal-close .fas.fa-times:hover{
+    font-size: 22px;
+    color: rgb(155, 155, 155);
+
+    float: right;
+}
+
+
+/* BreakPoints 
+--------------------------------*/
+@media(max-width: 767.9px){
+    input, select{
+        width: 33%;
+        min-width: 180px;
+    }  
+
+    .titulo{
+        width: 60%;
+    }
+}
+
+@media (min-width: 768px){
+    .titulo{
+        width: 60%;
+    }
+    
+    input, select{
+        min-width: 200px;
+    }
+}
+
+
+@media (min-width: 900px){
+    input, select{
+        min-width: 250px;
+    }
+
+    .titulo{
+        width: 35%;
+    }
+}
+
+@media(min-width: 930px){
+    input, select{
+        min-width: 270px;
+    }
+}
+
+@media (max-width: 1299.9px){
+    #barra-navegadores{
+        display: initial;
+    }
+    .close{
+        display: initial;
+    }
+
+    .navegadores{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 300px;
+
+        height: 100%;
+
+        background:rgb(17, 47, 66);
+        margin-left: 0;
+
+        
+    }
+    .navegador{
+        margin: 10px 30px;
+        background: white;
+        color: rgb(17, 47, 66);
+    }
+    .navegador:hover{
+        color: white;
+        background: rgb(95, 135, 160);
+    }
+    .navegador:nth-child(1){
+        margin-top: 200px;
+    }
+    
+    .conteudo{
+        width: 100%;
+        float: none;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1300px){
+    .navegadores.inativo{
+        display: initial;
+    }
+}
+
