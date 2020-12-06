@@ -242,7 +242,7 @@ function salvarEdicao(id){
     
     modal.className = 'modal-container ';
     modalTitulo.innerText = 'Alterar dados';
-    modalTexto.innerText = 'Tem certeza que deseja alterar o cadastrado?';
+    modalTexto.innerText = 'Tem certeza que deseja alterar o cadastro?';
     modalNormal.className = 'button ';
     modalNormal.onclick = () => {
         cadastrarLocal(id);
@@ -268,7 +268,7 @@ function removerLocal(id){
     
     modal.className = 'modal-container ';
     modalTitulo.innerText = 'Remover';
-    modalTexto.innerText = 'Tem certeza que deseja remover o cadastrado?';
+    modalTexto.innerText = 'Tem certeza que deseja remover o cadastro?';
     modalNormal.className = 'button';
     modalNormal.innerText = 'OK';
     modalNormal.onclick = () => {
