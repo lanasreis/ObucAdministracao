@@ -6,7 +6,7 @@
 }
 
 body{
-    font-family:'Open Sans';
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 a{
@@ -18,7 +18,7 @@ input {
 }
 
 input, select{
-    font: 400 13.3333px 'Open Sans';
+    font: 400 13.3333px 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     outline: none;
     width: 30%;
     min-width: 200px;
@@ -287,7 +287,7 @@ header{
     margin-right: 5px;
 
     font-size: 18px;
-    font-family: 'Open Sans';
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-transform: capitalize;
 
     border: 0;
