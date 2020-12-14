@@ -17,43 +17,56 @@ class LocalTrabalho{
 
 class DbLocaisTrabalho{
     constructor(){
-        let id = localStorage.getItem('id_locais')
+        let arr = Array();
+        arr = localStorage.getItem('arr_locais');
 
-        if(id === null){
-            id = localStorage.setItem('id_locais', 0);
+        if(arr == null){
+            arr = localStorage.setItem('arr_locais', []);
         }
     }
 
-    //retorna o proximo id disponível
-    proximoId(){
-        let id = localStorage.getItem('id_locais');
-        return parseInt(id) + 1;
+    getArray(){
+        let arr = [];
+        arr = JSON.parse(localStorage.getItem('arr_locais'));
+        if(arr == ''){
+            arr = [];
+        }
+        return arr;
     }
 
     //insere elemento no localStorage
     set(local){
-        let id = this.proximoId();
-        localStorage.setItem(`id_local_${id}`, JSON.stringify(local));
-        localStorage.setItem(`id_locais`, id);
+        let arr = [];
+        arr = this.getArray();
+        arr.push(local);
+        localStorage.setItem('arr_locais', JSON.stringify(arr));
     }
 
     //edita elemento
     setId(id, local){
-        localStorage.setItem(`id_local_${id}`, JSON.stringify(local));
+        let arr = [];
+        arr = this.getArray();
+        arr[id] = local;
+        localStorage.setItem(`arr_locais`, JSON.stringify(arr));
     }
 
     //remove elemento
     delete(id){
-        localStorage.removeItem(`id_local_${id}`);
+        let arr = [];
+        arr = JSON.parse(localStorage.getItem('arr_locais'));
+
+        let newArray = [];
+        newArray = arr.filter((value, index) => index != id);
+        localStorage.setItem('arr_locais', JSON.stringify(newArray));
         this.isEmpty();
     }
 
     isEmpty(){
-        let locais = Array();
-        locais = this.getAll();
-
-        if(locais.length === 0){
-            localStorage.setItem(`id_locais`, 0);
+        let arr = [];
+        arr = JSON.parse(localStorage.getItem('arr_locais'));
+        
+        if(arr.length === 0){
+            localStorage.setItem(`arr_locais`, []);
             return true;
         }
 
@@ -61,39 +74,23 @@ class DbLocaisTrabalho{
     }
 
     getById(id){
-        let local = JSON.parse(localStorage.getItem(`id_local_${id}`));
-        return local;
+        let arr = [];
+        arr = JSON.parse(localStorage.getItem('arr_locais'));
+        return arr[id];
     }
 
-    //apresentas todos os elementos
-    getAll(){
-        let id = localStorage.getItem('id_locais');
-        let locais = Array();
-
-        for(let i=1; i<=id; i++){
-            
-            //se elemento na pos i não existir/foi removido continua 
-            if(localStorage.getItem(`id_local_${i}`) === null){
-                continue;
-            }
-
-            let local = this.getById(i);
-            local.id = i;
-
-            locais.push(local);
-        }
-
-        return locais;
-    }
 }
 
 let dbLocais = new DbLocaisTrabalho();
 
 
-function cadastrarLocal(id = ''){
-    let funcionario = document.getElementById(`funcionario_${id}`).value;
-    let predio = document.getElementById(`predio_${id}`).value;
-    let local = document.getElementById(`localTrabalho_${id}`).value;
+function cadastrarLocal(id = -1){
+    console.log("Alterar ", id);
+    let aux = id;
+    if(id == -1) aux = '';
+    let funcionario = document.getElementById(`funcionario_${aux}`).value;
+    let predio = document.getElementById(`predio_${aux}`).value;
+    let local = document.getElementById(`localTrabalho_${aux}`).value;
 
     let localTrabalho = new LocalTrabalho(
         funcionario,
@@ -101,7 +98,8 @@ function cadastrarLocal(id = ''){
         local
     );
 
-    if(id != '' && localTrabalho.validarLocalTrabalho()){
+    if(id >= 0 && localTrabalho.validarLocalTrabalho()){
+        console.log('Entrei Alterar ', id)
         dbLocais.setId(id, localTrabalho);
     }
 
@@ -156,7 +154,7 @@ function cadastrarLocal(id = ''){
 
 function listaLocais(locais = '') {
     if(locais == ''){
-        locais = dbLocais.getAll();
+        locais = dbLocais.getArray();
     }
 
     let table = document.getElementById('tabela-info');
@@ -177,14 +175,14 @@ function listaLocais(locais = '') {
         let apresentandoLocais = document.getElementById('apresentandoLocais');
         apresentandoLocais.innerHTML = '';
 
-        locais.forEach(function(local){
+        locais.forEach(function(local, id){
             let linha = apresentandoLocais.insertRow();
 
-            linha.id = `linha_${local.id}`;
+            linha.id = `linha_${id}`;
             linha.insertCell(0).innerHTML = local.funcionario;
             linha.insertCell(1).innerHTML = local.predio.replace('p', 'P');
             linha.insertCell(2).innerHTML = local.localDeTrabalho;
-            linha.insertCell(3).innerHTML = `<i class="fas fa-pen" onclick="editarLocal(${local.id})"></i><i class="fas fa-trash" onclick="removerLocal(${local.id})"></i>`;
+            linha.insertCell(3).innerHTML = `<i class="fas fa-pen" onclick="editarLocal(${id})"></i><i class="fas fa-trash" onclick="removerLocal(${id})"></i>`;
             
         });
     
@@ -323,7 +321,7 @@ function buscarLocal(){
     );
 
     let locaisLista = [];
-    locaisLista = dbLocais.getAll();
+    locaisLista = dbLocais.getArray();
 
     let result = locaisLista.filter(local => (local.funcionario.includes(buscaLocal.funcionario) && local.predio.includes(buscaLocal.predio) && local.localDeTrabalho.includes(buscaLocal.localDeTrabalho)))
 
